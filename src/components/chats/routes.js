@@ -7,19 +7,26 @@ import { MessagesController } from "./messageController.js";
 
 const router = Router();
 
-router.get(`/`, passportCall("jwt"), async (req, res) => {
-  const loadMessages = MessagesController.getMessages();
-  return loadMessages;
+router.get(`/`, passportCall("jwt"), async (req, res, next) => {
+  try {
+    const loadMessages = MessagesController.getMessages();
+    return loadMessages;
+  } catch (error) {
+    next(error)
+  }
 });
 
 router.post(
   `/`,
   passportCall("jwt"),
   authorization("user"),
-  async (req, res) => {
-    console.log(req);
-    let mensaje = MessagesController.createMessages(req.body);
-    return mensaje.payload;
+  async (req, res, next) => {
+    try {
+      let mensaje = MessagesController.createMessages(req.body);
+      return mensaje.payload;
+    } catch (error) {
+      next(error);
+    }
   }
 );
 

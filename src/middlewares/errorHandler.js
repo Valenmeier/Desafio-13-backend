@@ -1,14 +1,18 @@
 import EErrors from "../services/errors/enums.js";
 
-export default (err, req, res, next) => {
-  console.log("Ingreso Al err Handler");
-  switch (err.status) {
+export default (error, req, res, next) => {
+  switch (error.status) {
     case EErrors.INVALID_TYPES_ERROR:
       res
-        .status(err.status)
-        .send({ status: err.status, response: err.response });
+        .status(error.status)
+        .send({ status: error.status, response: error.response });
+      break;
+    case EErrors.SERVER_ERROR:
+      res
+        .status(error.status)
+        .send({ status: error.status, response: error.response });
       break;
     default:
-      res.status(err.status).send({ status: "err", response: "Unhandled error" });
+      res.send({ status: "error", error: "Unhandled error" });
   }
 };

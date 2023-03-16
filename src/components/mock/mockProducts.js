@@ -7,7 +7,6 @@ export const generateProduct = (quantity) => {
       status: EErrors.SERVER_ERROR,
       response: "Quantity of products is not defined",
     });
-
   let products = [];
   for (let index = 0; index < quantity; index++) {
     let newProduct = {

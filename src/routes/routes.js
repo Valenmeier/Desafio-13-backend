@@ -18,5 +18,4 @@ router.use("/api/carts", cartsRouter);
 router.use("/api/chat", chatRouter);
 router.use("/api/products", productsRouter);
 
-
 export default router;

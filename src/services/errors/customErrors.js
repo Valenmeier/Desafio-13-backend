@@ -1,8 +1,9 @@
 export default class CustomError {
   static createError({ status = 500, response }) {
-    const error = new Error();
-    error.status = status;
-    error.response = response;
-    throw error;
+    const err = new Error("Error");
+    // const err = {};
+    err.status = status;
+    err.response = response;
+    throw err;
   }
 }
