@@ -5,12 +5,13 @@ import productsRouter from "../components/products/routes.js";
 import sessionRouter from "../components/users/routes.js";
 import ticketRouter from "../components/ticket/routes.js";
 import mockingProducts from "../components/mock/routes.js";
+import loggerTest from "../components/log/routes.js";
 import handlebarsRouter from "../client/handlebarRoutes.js";
-
 
 const router = Router();
 
 router.use("/", handlebarsRouter);
+router.use("/loggerTest", loggerTest);
 router.use("/mockingproducts", mockingProducts);
 router.use("/api/ticket", ticketRouter);
 router.use("/api/sessions", sessionRouter);

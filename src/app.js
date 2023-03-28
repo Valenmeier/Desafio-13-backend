@@ -15,6 +15,7 @@ import passport from "passport";
 import initializePassport from "./config/passportConfig.js";
 import MongoConnection from "./mongoSingleton.js";
 import { socketServer } from "./config/socket.js";
+import { addLogger } from "./services/logger/logger.js";
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,7 @@ initializePassport();
 
 MongoConnection.getInstance();
 
+app.use(addLogger);
 app.use(session(MongoInstance));
 app.use(passport.initialize());
 app.use(passport.session());
